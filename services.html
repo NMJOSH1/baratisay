@@ -2,267 +2,384 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Services - Baratisay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baratisay - Wedding Services</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #fffaf2, #fff3e0);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fffdfc;
+      color: #333;
+      padding: 2rem;
+      position: relative;
     }
-
-    .service-section {
-      margin: 40px auto;
-      max-width: 900px;
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .intro-box {
+      max-width: 700px;
+      margin: auto;
+      background-color: #fef8e8;
       padding: 20px;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .service-section h1 {
-      text-align: center;
-      color: #cda766;
-      margin-bottom: 30px;
-      font-size: 1.8rem;
-    }
-
-    .category {
-      margin-bottom: 20px;
-    }
-
-    .category h2 {
-      background-color: #cda766;
-      color: white;
-      padding: 12px 20px;
       border-radius: 10px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background 0.3s;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      border: 1px dashed #d4a24e;
     }
-
-    .category h2:hover {
-      background-color: #b58f4d;
+    details {
+      margin-bottom: 1.5rem;
+      background: #f9f2e8;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1rem;
     }
-
-    .category ul {
-      list-style-type: none;
-      padding-left: 25px;
-      display: none;
-      margin-top: 10px;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    .category.open ul {
-      display: block;
-    }
-
-    .category ul li {
-      padding: 5px 0;
-      border-bottom: 1px dotted #ccc;
-      font-size: 0.95rem;
-    }
-
-    .cta-button {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .cta-button a {
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 25px;
+    summary {
+      font-size: 1.3rem;
       font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
+      cursor: pointer;
+      margin-bottom: 1rem;
     }
-
-    .cta-button a:hover {
-      background-color: #1ebe5d;
+    ul {
+      list-style: none;
+      padding-left: 1rem;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button.add-btn {
+      flex-shrink: 0;
+      margin-left: 10px;
+      padding: 5px 12px;
+      background: #bb2f2f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    button.added {
+      background-color: #4CAF50 !important;
+      color: white !important;
+      font-weight: bold;
+    }
+    #selectedList {
+      background: #f3f8ed;
+      padding: 1rem;
+      margin-top: 2rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    #submitBtn {
+      margin-top: 1rem;
+      background-color: #d4a24e;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #cartCount {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: fixed;
+      z-index: 1;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 16px;
+    }
+    #toast.show {
+      visibility: visible;
+      animation: fadein 0.5s, fadeout 0.5s 2s;
+    }
+    @keyframes fadein {
+      from { bottom: 40px; opacity: 0; }
+      to { bottom: 60px; opacity: 1; }
+    }
+    @keyframes fadeout {
+      from { bottom: 60px; opacity: 1; }
+      to { bottom: 40px; opacity: 0; }
+    }
+    #floatingCartBtn {
+      display: none;
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: #bb2f2f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      z-index: 999;
+    }
+    #nameInput {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    @media (max-width: 768px) {
+      #floatingCartBtn {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo-baratisay.png" alt="Baratisay Logo" class="logo" />
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <h1>💍 Plan Your Dream Wedding with Baratisay</h1>
+  <div class="intro-box">
+    Welcome to Baratisay! Explore our wide range of professional wedding services. Add services you’re interested in and easily send an inquiry to our team. We'll connect you with the best vendors at the best prices.
+  </div>
+  <div id="services">
+  <details>
+    <summary>🪪 Wedding Essentials</summary>
+    <ul>
+      <li>💌 Wedding card printing & design <button class="add-btn">+ Add</button></li>
+      <li>🧾 Full wedding planning & coordination <button class="add-btn">+ Add</button></li>
+      <li>👔 On-day wedding coordinator <button class="add-btn">+ Add</button></li>
+      <li>💸 Budget & vendor management <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>💄 Beauty & Grooming</summary>
+    <ul>
+      <li>👰 Bridal makeup <button class="add-btn">+ Add</button></li>
+      <li>🤵 Groom makeup <button class="add-btn">+ Add</button></li>
+      <li>💇 Hair stylist <button class="add-btn">+ Add</button></li>
+      <li>💅 Nail artist <button class="add-btn">+ Add</button></li>
+      <li>🌿 Pre-wedding spa & facials <button class="add-btn">+ Add</button></li>
+      <li>👨‍👩‍👧 Family & guest makeup <button class="add-btn">+ Add</button></li>
+      <li>🌼 Mehndi artist <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🧹 Support Staff & Logistics</summary>
+    <ul>
+      <li>🧼 Maids / House help <button class="add-btn">+ Add</button></li>
+      <li>🍽 Waiters / Serving staff <button class="add-btn">+ Add</button></li>
+      <li>🚗 Drivers <button class="add-btn">+ Add</button></li>
+      <li>🅿️ Valet parking staff <button class="add-btn">+ Add</button></li>
+      <li>🚽 Portable washrooms <button class="add-btn">+ Add</button></li>
+      <li>🔌 Generator backup <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>📸 Photography & Videography</summary>
+    <ul>
+      <li>📷 Wedding photography <button class="add-btn">+ Add</button></li>
+      <li>🎥 Drone shots & cinematic video <button class="add-btn">+ Add</button></li>
+      <li>📡 Live wedding streaming <button class="add-btn">+ Add</button></li>
+      <li>🎞 Wedding reels / Instagram edits <button class="add-btn">+ Add</button></li>
+      <li>🖼 Photo booth / selfie booth <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🍽 Catering & Food Add-ons</summary>
+    <ul>
+      <li>🥘 Complete food catering <button class="add-btn">+ Add</button></li>
+      <li>🍧 Chaat counters <button class="add-btn">+ Add</button></li>
+      <li>🍹 Mocktail & juice bar <button class="add-btn">+ Add</button></li>
+      <li>🍦 Ice cream / kulfi station <button class="add-btn">+ Add</button></li>
+      <li>🍫 Chocolate fountain <button class="add-btn">+ Add</button></li>
+      <li>🍃 Paan counter <button class="add-btn">+ Add</button></li>
+      <li>🍎 Fruit vendor (phal wala) <button class="add-btn">+ Add</button></li>
+      <li>🎂 Custom wedding cake <button class="add-btn">+ Add</button></li>
+      <li>🚰 Water bottles / water tank supply <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🌸 Decoration & Setup</summary>
+    <ul>
+      <li>⛺ Tent & lighting <button class="add-btn">+ Add</button></li>
+      <li>💐 Flower decoration <button class="add-btn">+ Add</button></li>
+      <li>🎪 Gate & stage decoration <button class="add-btn">+ Add</button></li>
+      <li>🛕 Mandap setup <button class="add-btn">+ Add</button></li>
+      <li>💞 Varmala stage <button class="add-btn">+ Add</button></li>
+      <li>📽 LED wall / projectors <button class="add-btn">+ Add</button></li>
+      <li>🎊 Confetti / cold pyros <button class="add-btn">+ Add</button></li>
+      <li>🏰 Themed décor (royal, Rajasthani, boho) <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🕺 Entertainment</summary>
+    <ul>
+      <li>🎧 DJ <button class="add-btn">+ Add</button></li>
+      <li>🥁 Wedding band / Dhol <button class="add-btn">+ Add</button></li>
+      <li>🎤 Live singers & musicians <button class="add-btn">+ Add</button></li>
+      <li>🎙 Anchor / MC <button class="add-btn">+ Add</button></li>
+      <li>💃 LED dancers <button class="add-btn">+ Add</button></li>
+      <li>🎆 Fireworks <button class="add-btn">+ Add</button></li>
+      <li>🐭 Cartoon mascots (Mickey etc.) <button class="add-btn">+ Add</button></li>
+      <li>👑 Chadar service <button class="add-btn">+ Add</button></li>
+      <li>🌺 Welcome girls (aarti thali) <button class="add-btn">+ Add</button></li>
+      <li>🐎 Horse / vintage car for Baraat <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🚗 Transport & Vehicle Services</summary>
+    <ul>
+      <li>🚘 Car rental (groom/bride entry) <button class="add-btn">+ Add</button></li>
+      <li>🚌 Shuttle service for guests <button class="add-btn">+ Add</button></li>
+      <li>🚉 Station/airport pick-drop <button class="add-btn">+ Add</button></li>
+      <li>🛻 Bus or tempo traveler <button class="add-btn">+ Add</button></li>
+      <li>🏎 Luxury cars (Jaguar, Audi, BMW) <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🏨 Accommodation & Guest Services</summary>
+    <ul>
+      <li>🛏 Guest room booking <button class="add-btn">+ Add</button></li>
+      <li>🎀 Bride & groom suite decoration <button class="add-btn">+ Add</button></li>
+      <li>🏡 Farmhouse or Dharamshala stay <button class="add-btn">+ Add</button></li>
+      <li>🍹 Welcome drinks & hampers <button class="add-btn">+ Add</button></li>
+      <li>🛎 Hospitality desk <button class="add-btn">+ Add</button></li>
+      <li>☕ Bed tea & breakfast <button class="add-btn">+ Add</button></li>
+      <li>📋 Check-in/out management <button class="add-btn">+ Add</button></li>
+      <li>📞 Guest RSVP coordination <button class="add-btn">+ Add</button></li>
+      <li>🗺 Travel coordination <button class="add-btn">+ Add</button></li>
+      <li>📲 Itinerary via WhatsApp/SMS <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🛍 Fashion & Accessories</summary>
+    <ul>
+      <li>👗 Bridal lehenga & Sherwani rental <button class="add-btn">+ Add</button></li>
+      <li>🎩 Pagdi/Safa tying <button class="add-btn">+ Add</button></li>
+      <li>💍 Jewelry on rent <button class="add-btn">+ Add</button></li>
+      <li>💐 Varmala / Jaimala designs <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🙏 Religious & Traditional Services</summary>
+    <ul>
+      <li>🕉 Pandit / priest booking <button class="add-btn">+ Add</button></li>
+      <li>📿 Pooja samagri kits <button class="add-btn">+ Add</button></li>
+      <li>💛 Haldi / Sangeet / Mehndi setup <button class="add-btn">+ Add</button></li>
+      <li>🛕 Mandap decoration <button class="add-btn">+ Add</button></li>
+      <li>🚩 Doli or palki for bride <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+  <details>
+    <summary>🌴 Honeymoon Planning</summary>
+    <ul>
+      <li>🛫 Domestic & international packages <button class="add-btn">+ Add</button></li>
+      <li>🏨 Flights, hotels, visa, sightseeing <button class="add-btn">+ Add</button></li>
+      <li>💞 Custom honeymoon packages <button class="add-btn">+ Add</button></li>
+      <li>🕯 Romantic room decor & dinner <button class="add-btn">+ Add</button></li>
+      <li>📸 Pre-honeymoon shoot <button class="add-btn">+ Add</button></li>
+    </ul>
+  </details>
+</div>
 
-  <main class="service-section">
-    <h1>💍 Complete Wedding Services Catalog</h1>
+  <div id="selectedList">
+    <h2>📋 Selected Services for Inquiry</h2>
+    <p id="cartCount">No services selected yet.</p>
+    <ul id="selectedItems"></ul>
+    <input type="text" id="nameInput" placeholder="Enter your good name (optional)" />
+    <button id="submitBtn">📩 Submit Inquiry via WhatsApp</button>
+  </div>
 
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🪪 Wedding Essentials</h2>
-      <ul>
-        <li>💌 Wedding card printing & design</li>
-        <li>🧾 Full wedding planning & coordination</li>
-        <li>👔 On-day wedding coordinator</li>
-        <li>💸 Budget & vendor management</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>💄 Beauty & Grooming</h2>
-      <ul>
-        <li>👰 Bridal makeup</li>
-        <li>🤵 Groom makeup</li>
-        <li>💇 Hair stylist</li>
-        <li>💅 Nail artist</li>
-        <li>🌿 Pre-wedding spa & facials</li>
-        <li>👨‍👩‍👧 Family & guest makeup</li>
-        <li>🌼 Mehndi artist</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🧹 Support Staff & Logistics</h2>
-      <ul>
-        <li>🧼 Maids / House help</li>
-        <li>🍽 Waiters / Serving staff</li>
-        <li>🚗 Drivers</li>
-        <li>🅿️ Valet parking staff</li>
-        <li>🚽 Portable washrooms</li>
-        <li>🔌 Generator backup</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>📸 Photography & Videography</h2>
-      <ul>
-        <li>📷 Wedding photography</li>
-        <li>🎥 Drone shots & cinematic video</li>
-        <li>📡 Live wedding streaming</li>
-        <li>🎞 Wedding reels / Instagram edits</li>
-        <li>🖼 Photo booth / selfie booth</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🍽 Catering & Food Add-ons</h2>
-      <ul>
-        <li>🥘 Complete food catering</li>
-        <li>🍧 Chaat counters</li>
-        <li>🍹 Mocktail & juice bar</li>
-        <li>🍦 Ice cream / kulfi station</li>
-        <li>🍫 Chocolate fountain</li>
-        <li>🍃 Paan counter</li>
-        <li>🍎 Fruit vendor (phal wala)</li>
-        <li>🎂 Custom wedding cake</li>
-        <li>🚰 Water bottles / water tank supply</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🌸 Decoration & Setup</h2>
-      <ul>
-        <li>⛺ Tent & lighting</li>
-        <li>💐 Flower decoration</li>
-        <li>🎪 Gate & stage decoration</li>
-        <li>🛕 Mandap setup</li>
-        <li>💞 Varmala stage</li>
-        <li>📽 LED wall / projectors</li>
-        <li>🎊 Confetti / cold pyros</li>
-        <li>🏰 Themed décor (royal, Rajasthani, boho)</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🕺 Entertainment</h2>
-      <ul>
-        <li>🎧 DJ</li>
-        <li>🥁 Wedding band / Dhol</li>
-        <li>🎤 Live singers & musicians</li>
-        <li>🎙 Anchor / MC</li>
-        <li>💃 LED dancers</li>
-        <li>🎆 Fireworks</li>
-        <li>🐭 Cartoon mascots (Mickey etc.)</li>
-        <li>👑 Chadar service</li>
-        <li>🌺 Welcome girls (aarti thali)</li>
-        <li>🐎 Horse / vintage car for Baraat</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🚗 Transport & Vehicle Services</h2>
-      <ul>
-        <li>🚘 Car rental (groom/bride entry)</li>
-        <li>🚌 Shuttle service for guests</li>
-        <li>🚉 Station/airport pick-drop</li>
-        <li>🛻 Bus or tempo traveler</li>
-        <li>🏎 Luxury cars (Jaguar, Audi, BMW)</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🏨 Accommodation & Guest Services</h2>
-      <ul>
-        <li>🛏 Guest room booking</li>
-        <li>🎀 Bride & groom suite decoration</li>
-        <li>🏡 Farmhouse or Dharamshala stay</li>
-        <li>🍹 Welcome drinks & hampers</li>
-        <li>🛎 Hospitality desk</li>
-        <li>☕ Bed tea & breakfast</li>
-        <li>📋 Check-in/out management</li>
-        <li>📞 Guest RSVP coordination</li>
-        <li>🗺 Travel coordination</li>
-        <li>📲 Itinerary via WhatsApp/SMS</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🛍 Fashion & Accessories</h2>
-      <ul>
-        <li>👗 Bridal lehenga & Sherwani rental</li>
-        <li>🎩 Pagdi/Safa tying</li>
-        <li>💍 Jewelry on rent</li>
-        <li>💐 Varmala / Jaimala designs</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🙏 Religious & Traditional Services</h2>
-      <ul>
-        <li>🕉 Pandit / priest booking</li>
-        <li>📿 Pooja samagri kits</li>
-        <li>💛 Haldi / Sangeet / Mehndi setup</li>
-        <li>🛕 Mandap decoration</li>
-        <li>🚩 Doli or palki for bride</li>
-      </ul>
-    </div>
-
-    <div class="category" onclick="toggleCategory(this)">
-      <h2>🌴 Honeymoon Planning</h2>
-      <ul>
-        <li>🛫 Domestic & international packages</li>
-        <li>🏨 Flights, hotels, visa, sightseeing</li>
-        <li>💞 Custom honeymoon packages</li>
-        <li>🕯 Romantic room decor & dinner</li>
-        <li>📸 Pre-honeymoon shoot</li>
-      </ul>
-    </div>
-
-    <div class="cta-button">
-      <p style="margin-bottom: 10px;">Can’t find your service? Contact us directly:</p>
-      <a href="https://wa.me/918745960120" target="_blank">💬 WhatsApp Us</a>
-    </div>
-  </main>
+  <div id="toast">Your inquiry is ready to send!</div>
+  <button id="floatingCartBtn" onclick="document.getElementById('selectedList').scrollIntoView({behavior: 'smooth'})">
+    🛒 View Inquiry Cart
+  </button>
 
   <script>
-    function toggleCategory(element) {
-      element.classList.toggle('open');
+    const addButtons = document.querySelectorAll('.add-btn');
+    const selectedItemsList = document.getElementById('selectedItems');
+    const cartCount = document.getElementById('cartCount');
+    const submitBtn = document.getElementById('submitBtn');
+    const toast = document.getElementById('toast');
+    const nameInput = document.getElementById('nameInput');
+    let selectedServices = JSON.parse(localStorage.getItem('baratisaySelections')) || [];
+
+    function updateCart() {
+      selectedItemsList.innerHTML = '';
+      selectedServices.forEach(service => {
+        const li = document.createElement('li');
+        li.textContent = service;
+        selectedItemsList.appendChild(li);
+      });
+      cartCount.innerText = selectedServices.length
+        ? `${selectedServices.length} service(s) selected.`
+        : 'No services selected yet.';
+      localStorage.setItem('baratisaySelections', JSON.stringify(selectedServices));
+      document.querySelectorAll('.add-btn').forEach(btn => {
+        const service = btn.parentElement.innerText.replace('+ Add', '').replace('✓ Selected', '').trim();
+        if (selectedServices.includes(service)) {
+          btn.classList.add('added');
+          btn.innerText = '✓ Selected';
+        } else {
+          btn.classList.remove('added');
+          btn.innerText = '+ Add';
+        }
+      });
     }
+
+    addButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const service = btn.parentElement.innerText.replace('+ Add', '').replace('✓ Selected', '').trim();
+        if (selectedServices.includes(service)) {
+          selectedServices = selectedServices.filter(item => item !== service);
+        } else {
+          selectedServices.push(service);
+        }
+        updateCart();
+      });
+    });
+
+    submitBtn.addEventListener('click', () => {
+      if (!selectedServices.length) {
+        alert('Please select at least one service before submitting.');
+        return;
+      }
+      const name = nameInput.value.trim();
+      let message = `Hello! I'm interested in the following wedding services from Baratisay:%0A`;
+      if (name) {
+        message += `%0A👤 Name: ${encodeURIComponent(name)}`;
+      }
+      selectedServices.forEach((service, index) => {
+        message += `%0A${index + 1}. ${encodeURIComponent(service)}`;
+      });
+      message += `%0A%0APlease get in touch with me. Thank you!`;
+      const whatsappURL = `https://wa.me/918745960120?text=${message}`;
+      window.open(whatsappURL, '_blank');
+
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    });
+
+    // Accordion behavior: only one <details> open at a time
+    document.querySelectorAll('details').forEach((targetDetail) => {
+      targetDetail.addEventListener('click', () => {
+        document.querySelectorAll('details').forEach((detail) => {
+          if (detail !== targetDetail) {
+            detail.removeAttribute('open');
+          }
+        });
+      });
+    });
+
+    updateCart();
   </script>
 </body>
 </html>

@@ -1,144 +1,169 @@
-/* Reset & base */
-body {
+/* RESET + BASE */
+* {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(to bottom right, #fffaf2, #fff3e0);
-  color: #333;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Header & Navbar */
+body {
+  background-color: #fffdfc;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+/* HEADER */
 header {
-  background-color: #e3c48f;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-color: #fceaea;
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #ffdada;
 }
 
-.logo {
-  height: 60px;
+header img {
+  height: 50px;
+  margin-bottom: 0.5rem;
 }
 
-.navbar {
-  display: flex;
-  gap: 20px;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #4d2c1c;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover,
-.navbar .active {
+nav a {
+  margin: 0 1rem;
   color: #000;
-}
-
-/* Services Section */
-.service-section {
-  margin: 40px auto;
-  max-width: 900px;
-  padding: 20px;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
-}
-
-.service-section h1 {
-  text-align: center;
-  color: #cda766;
-  margin-bottom: 30px;
-  font-size: 1.8rem;
-}
-
-/* Category Section */
-.category {
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-
-.category h2 {
-  background-color: #cda766;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background 0.3s;
-}
-
-.category h2:hover {
-  background-color: #b58f4d;
-}
-
-.category ul {
-  list-style-type: none;
-  padding-left: 25px;
-  display: none;
-  margin-top: 10px;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.category.open ul {
-  display: block;
-}
-
-.category ul li {
-  padding: 5px 0;
-  border-bottom: 1px dotted #ccc;
-  font-size: 0.95rem;
-}
-
-/* WhatsApp Button */
-.cta-button {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.cta-button a {
-  display: inline-block;
-  background-color: #25D366;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-weight: bold;
   text-decoration: none;
-  transition: background 0.3s;
+  font-weight: 600;
 }
 
-.cta-button a:hover {
-  background-color: #1ebe5d;
+/* MAIN CONTENT */
+main {
+  padding: 2rem;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #111;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .navbar {
-    gap: 10px;
-    font-size: 14px;
+p {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* BUTTONS */
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  background-color: #bb2f2f;
+  color: #fff;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #a12727;
+}
+
+/* HERO SECTION */
+.hero-image {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.hero-text {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2rem 1rem;
+  margin: 2rem auto;
+  width: 90%;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-text img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+/* BOOK NOW BUTTON */
+.book-now-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #d4a24e;
+  color: white;
+  text-decoration: none;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-btn:hover {
+  background-color: #b88c32;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
   }
 
-  .logo {
-    height: 50px;
+  p {
+    font-size: 1rem;
+    padding: 0 1rem;
   }
 
-  .service-section {
-    margin: 20px;
-    padding: 15px;
+  .home-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    z-index: 1;
+    position: relative;
+  }
+
+  .btn {
+    width: 80%;
+    text-align: center;
+  }
+
+  .hero-text {
+    width: 95%;
+    font-size: 1.2rem;
+  }
+
+  .hero-heading {
+    font-size: 1.6rem;
+  }
+
+  .book-now-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.3rem;
   }
 }
