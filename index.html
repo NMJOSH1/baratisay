@@ -3,8 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Baratisay | Home</title>
+  <title>Baratisay - Every Wedding, A Royal Celebration</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-image {
+      position: relative;
+      margin-top: 60px;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    .hero-image img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .book-now-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #cda766;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .book-now-btn:hover {
+      background-color: #b58d4f;
+    }
+
+    .home-buttons {
+      margin-bottom: 40px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,14 +66,22 @@
   </header>
 
   <main class="home-main">
-    <h1>Every Wedding, A Royal Celebration — Intzaam by Baratisay</h1>
-    <p>From planning to doli — we've got every detail covered for your big day.</p>
+    <h1>Every Wedding, A Royal Celebration</h1>
+    <p>Intzaam by Baratisay — From planning to doli, we’re with you all the way.</p>
+
     <div class="home-buttons">
       <a href="services.html" class="btn">Explore Services</a>
       <a href="contact.html" class="btn">Contact Us</a>
     </div>
-  </main>
 
-  <a href="https://wa.me/918745960120" class="whatsapp-float" target="_blank">💬</a>
+    <div class="hero-image">
+      <img src="wedding-banner.jpg" alt="Royal Wedding Banner" />
+      <div class="hero-text">
+        Plan Your Dream Wedding with Baratisay
+        <br>
+        <a href="contact.html" class="book-now-btn">📞 Book Now</a>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
