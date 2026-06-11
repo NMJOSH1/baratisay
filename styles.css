@@ -171,3 +171,140 @@ p {
     padding: 0.7rem 1.3rem;
   }
 }
+
+/* SECTION TITLES */
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+
+/* ABOUT SECTION */
+.about-section {
+  max-width: 800px;
+  margin: 4rem auto;
+  text-align: center;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+}
+
+/* WHY CHOOSE US SECTION */
+.why-section {
+  max-width: 1100px;
+  margin: 4rem auto;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.why-card {
+  background-color: #fff7f0;
+  border: 1px solid #ffe3d0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.why-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.why-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.why-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  color: #666;
+}
+
+/* HOW IT WORKS SECTION */
+.how-section {
+  max-width: 1000px;
+  margin: 4rem auto;
+  text-align: center;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.step {
+  background-color: #fceaea;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #bb2f2f;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.step p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  color: #666;
+}
+
+/* RESPONSIVE: NEW SECTIONS */
+@media (max-width: 900px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    padding: 0 1rem;
+  }
+
+  .about-text {
+    padding: 0 1rem;
+  }
+}
