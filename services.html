@@ -6,81 +6,188 @@
   <title>Baratisay - Wedding Services</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .intro-box {
-      max-width: 700px;
-      margin: auto;
-      background-color: #fef8e8;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 2rem;
+    /* HERO */
+    .services-hero {
+      background: linear-gradient(135deg, #6b1f1f, #bb2f2f 60%, #d4a24e);
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-radius: 1rem;
+      max-width: 900px;
+      margin: 0 auto 2.5rem auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .services-hero h1 {
+      color: #fff;
+      margin-bottom: 0.75rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .services-hero p {
+      color: #fdf3e7;
+      margin-bottom: 0;
       font-size: 1.05rem;
-      border: 1px dashed #d4a24e;
     }
-    details {
-      margin-bottom: 1.5rem;
-      background: #f9f2e8;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 1rem;
+
+    /* SERVICE CATEGORY CARDS */
+    .services-grid {
+      max-width: 900px;
+      margin: 0 auto 2.5rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    summary {
-      font-size: 1.3rem;
-      font-weight: bold;
-      cursor: pointer;
-      margin-bottom: 1rem;
+    .service-category {
+      background: #fff;
+      border: 1px solid #f0e0d0;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
-    ul {
+    .category-header {
       list-style: none;
-      padding-left: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      background: #fff7f0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #2c2c2c;
+      transition: background 0.2s ease;
     }
-    li {
+    .category-header::-webkit-details-marker { display: none; }
+    .category-header::marker { content: ''; }
+    .category-header:hover { background: #fdeee0; }
+    .service-category[open] .category-header {
+      background: #fdeee0;
+      border-bottom: 1px solid #f0e0d0;
+    }
+    .category-icon { font-size: 1.6rem; }
+    .category-title { flex: 1; }
+    .chevron {
+      color: #bb2f2f;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+    }
+    .service-category[open] .chevron { transform: rotate(180deg); }
+
+    .category-items {
+      padding: 0.75rem 1.4rem 1.3rem 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem 1.5rem;
+    }
+    .service-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f4ece2;
+      font-size: 0.97rem;
+    }
+    .service-name { flex: 1; }
+
+    /* ADD BUTTON */
+    button.add-btn {
+      flex-shrink: 0;
+      padding: 0.35rem 0.9rem;
+      background: #fff;
+      border: 1.5px solid #bb2f2f;
+      color: #bb2f2f;
+      border-radius: 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button.add-btn:hover { background: #bb2f2f; color: #fff; }
+    button.added {
+      background-color: #2e7d32 !important;
+      border-color: #2e7d32 !important;
+      color: #fff !important;
+      font-weight: bold;
+    }
+
+    /* SELECTED SERVICES CART */
+    #selectedList {
+      max-width: 900px;
+      margin: 0 auto 4rem auto;
+      background: #fff;
+      border: 2px solid #d4a24e;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+    #selectedList h2 {
+      text-align: left;
+      font-size: 1.3rem;
       margin-bottom: 0.5rem;
+      color: #111;
+    }
+    #cartCount {
+      text-align: left;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    #selectedItems {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    #selectedItems li {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: #fff7f0;
+      border-radius: 0.6rem;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.95rem;
     }
-    button.add-btn {
-      flex-shrink: 0;
-      margin-left: 10px;
-      padding: 5px 12px;
-      background: #bb2f2f;
-      color: white;
+    .remove-item-btn {
+      background: none;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    button.added {
-      background-color: #4CAF50 !important;
-      color: white !important;
+      color: #bb2f2f;
+      font-size: 1.1rem;
       font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 0.25rem;
     }
-    #selectedList {
-      background: #f3f8ed;
-      padding: 1rem;
-      margin-top: 2rem;
+    #nameInput {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 1rem;
       border: 1px solid #ccc;
-      border-radius: 10px;
+      border-radius: 0.6rem;
     }
     #submitBtn {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
+      width: 100%;
       background-color: #d4a24e;
       color: white;
-      padding: 0.8rem 1.6rem;
+      padding: 0.9rem 1.6rem;
       border: none;
-      border-radius: 10px;
-      font-size: 1rem;
+      border-radius: 0.6rem;
+      font-size: 1.05rem;
+      font-weight: 700;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    #cartCount {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
+    #submitBtn:hover { background-color: #b88c32; }
+
+    /* TOAST */
     #toast {
       visibility: hidden;
       min-width: 250px;
-      background-color: #4CAF50;
+      background-color: #2e7d32;
       color: white;
       text-align: center;
       border-radius: 8px;
@@ -104,6 +211,8 @@
       from { bottom: 60px; opacity: 1; }
       to { bottom: 40px; opacity: 0; }
     }
+
+    /* FLOATING CART BUTTON */
     #floatingCartBtn {
       display: none;
       position: fixed;
@@ -111,22 +220,20 @@
       right: 15px;
       background: #bb2f2f;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 22px;
       border-radius: 30px;
       font-weight: bold;
       border: none;
       cursor: pointer;
       z-index: 999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
-    #nameInput {
-      padding: 10px;
-      margin: 10px 0;
-      width: 100%;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+
+    /* MOBILE RESPONSIVE */
     @media (max-width: 768px) {
+      .category-items {
+        grid-template-columns: 1fr;
+      }
       #floatingCartBtn {
         display: block;
       }
@@ -144,156 +251,216 @@
   </header>
 
   <main>
-    <h1>💍 Plan Your Dream Wedding with Baratisay</h1>
-    <div class="intro-box">
-      Welcome to Baratisay! Explore our wide range of professional wedding services. Add services you’re interested in and easily send an inquiry to our team. We'll connect you with the best vendors at the best prices.
-    </div>
-    <div id="services">
-    <details>
-      <summary>🪪 Wedding Essentials</summary>
-      <ul>
-        <li>💌 Wedding card printing & design <button class="add-btn">+ Add</button></li>
-        <li>🧾 Full wedding planning & coordination <button class="add-btn">+ Add</button></li>
-        <li>👔 On-day wedding coordinator <button class="add-btn">+ Add</button></li>
-        <li>💸 Budget & vendor management <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>💄 Beauty & Grooming</summary>
-      <ul>
-        <li>👰 Bridal makeup <button class="add-btn">+ Add</button></li>
-        <li>🤵 Groom makeup <button class="add-btn">+ Add</button></li>
-        <li>💇 Hair stylist <button class="add-btn">+ Add</button></li>
-        <li>💅 Nail artist <button class="add-btn">+ Add</button></li>
-        <li>🌿 Pre-wedding spa & facials <button class="add-btn">+ Add</button></li>
-        <li>👨‍👩‍👧 Family & guest makeup <button class="add-btn">+ Add</button></li>
-        <li>🌼 Mehndi artist <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🧹 Support Staff & Logistics</summary>
-      <ul>
-        <li>🧼 Maids / House help <button class="add-btn">+ Add</button></li>
-        <li>🍽 Waiters / Serving staff <button class="add-btn">+ Add</button></li>
-        <li>🚗 Drivers <button class="add-btn">+ Add</button></li>
-        <li>🅿️ Valet parking staff <button class="add-btn">+ Add</button></li>
-        <li>🚽 Portable washrooms <button class="add-btn">+ Add</button></li>
-        <li>🔌 Generator backup <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>📸 Photography & Videography</summary>
-      <ul>
-        <li>📷 Wedding photography <button class="add-btn">+ Add</button></li>
-        <li>🎥 Drone shots & cinematic video <button class="add-btn">+ Add</button></li>
-        <li>📡 Live wedding streaming <button class="add-btn">+ Add</button></li>
-        <li>🎞 Wedding reels / Instagram edits <button class="add-btn">+ Add</button></li>
-        <li>🖼 Photo booth / selfie booth <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🍽 Catering & Food Add-ons</summary>
-      <ul>
-        <li>🥘 Complete food catering <button class="add-btn">+ Add</button></li>
-        <li>🍧 Chaat counters <button class="add-btn">+ Add</button></li>
-        <li>🍹 Mocktail & juice bar <button class="add-btn">+ Add</button></li>
-        <li>🍦 Ice cream / kulfi station <button class="add-btn">+ Add</button></li>
-        <li>🍫 Chocolate fountain <button class="add-btn">+ Add</button></li>
-        <li>🍃 Paan counter <button class="add-btn">+ Add</button></li>
-        <li>🍎 Fruit vendor (phal wala) <button class="add-btn">+ Add</button></li>
-        <li>🎂 Custom wedding cake <button class="add-btn">+ Add</button></li>
-        <li>🚰 Water bottles / water tank supply <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🌸 Decoration & Setup</summary>
-      <ul>
-        <li>⛺ Tent & lighting <button class="add-btn">+ Add</button></li>
-        <li>💐 Flower decoration <button class="add-btn">+ Add</button></li>
-        <li>🎪 Gate & stage decoration <button class="add-btn">+ Add</button></li>
-        <li>🛕 Mandap setup <button class="add-btn">+ Add</button></li>
-        <li>💞 Varmala stage <button class="add-btn">+ Add</button></li>
-        <li>📽 LED wall / projectors <button class="add-btn">+ Add</button></li>
-        <li>🎊 Confetti / cold pyros <button class="add-btn">+ Add</button></li>
-        <li>🏰 Themed décor (royal, Rajasthani, boho) <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🕺 Entertainment</summary>
-      <ul>
-        <li>🎧 DJ <button class="add-btn">+ Add</button></li>
-        <li>🥁 Wedding band / Dhol <button class="add-btn">+ Add</button></li>
-        <li>🎤 Live singers & musicians <button class="add-btn">+ Add</button></li>
-        <li>🎙 Anchor / MC <button class="add-btn">+ Add</button></li>
-        <li>💃 LED dancers <button class="add-btn">+ Add</button></li>
-        <li>🎆 Fireworks <button class="add-btn">+ Add</button></li>
-        <li>🐭 Cartoon mascots (Mickey etc.) <button class="add-btn">+ Add</button></li>
-        <li>👑 Chadar service <button class="add-btn">+ Add</button></li>
-        <li>🌺 Welcome girls (aarti thali) <button class="add-btn">+ Add</button></li>
-        <li>🐎 Horse / vintage car for Baraat <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🚗 Transport & Vehicle Services</summary>
-      <ul>
-        <li>🚘 Car rental (groom/bride entry) <button class="add-btn">+ Add</button></li>
-        <li>🚌 Shuttle service for guests <button class="add-btn">+ Add</button></li>
-        <li>🚉 Station/airport pick-drop <button class="add-btn">+ Add</button></li>
-        <li>🛻 Bus or tempo traveler <button class="add-btn">+ Add</button></li>
-        <li>🏎 Luxury cars (Jaguar, Audi, BMW) <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🏨 Accommodation & Guest Services</summary>
-      <ul>
-        <li>🛏 Guest room booking <button class="add-btn">+ Add</button></li>
-        <li>🎀 Bride & groom suite decoration <button class="add-btn">+ Add</button></li>
-        <li>🏡 Farmhouse or Dharamshala stay <button class="add-btn">+ Add</button></li>
-        <li>🍹 Welcome drinks & hampers <button class="add-btn">+ Add</button></li>
-        <li>🛎 Hospitality desk <button class="add-btn">+ Add</button></li>
-        <li>☕ Bed tea & breakfast <button class="add-btn">+ Add</button></li>
-        <li>📋 Check-in/out management <button class="add-btn">+ Add</button></li>
-        <li>📞 Guest RSVP coordination <button class="add-btn">+ Add</button></li>
-        <li>🗺 Travel coordination <button class="add-btn">+ Add</button></li>
-        <li>📲 Itinerary via WhatsApp/SMS <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🛍 Fashion & Accessories</summary>
-      <ul>
-        <li>👗 Bridal lehenga & Sherwani rental <button class="add-btn">+ Add</button></li>
-        <li>🎩 Pagdi/Safa tying <button class="add-btn">+ Add</button></li>
-        <li>💍 Jewelry on rent <button class="add-btn">+ Add</button></li>
-        <li>💐 Varmala / Jaimala designs <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🙏 Religious & Traditional Services</summary>
-      <ul>
-        <li>🕉 Pandit / priest booking <button class="add-btn">+ Add</button></li>
-        <li>📿 Pooja samagri kits <button class="add-btn">+ Add</button></li>
-        <li>💛 Haldi / Sangeet / Mehndi setup <button class="add-btn">+ Add</button></li>
-        <li>🛕 Mandap decoration <button class="add-btn">+ Add</button></li>
-        <li>🚩 Doli or palki for bride <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
-    <details>
-      <summary>🌴 Honeymoon Planning</summary>
-      <ul>
-        <li>🛫 Domestic & international packages <button class="add-btn">+ Add</button></li>
-        <li>🏨 Flights, hotels, visa, sightseeing <button class="add-btn">+ Add</button></li>
-        <li>💞 Custom honeymoon packages <button class="add-btn">+ Add</button></li>
-        <li>🕯 Romantic room decor & dinner <button class="add-btn">+ Add</button></li>
-        <li>📸 Pre-honeymoon shoot <button class="add-btn">+ Add</button></li>
-      </ul>
-    </details>
+    <section class="services-hero">
+      <h1>Our Wedding Services</h1>
+      <p>Browse our full range of services below. Tap a category to explore, select what you need, and send us your list — we'll get back to you on WhatsApp with details and pricing.</p>
+    </section>
+
+    <div class="services-grid" id="services">
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🪪</span>
+          <span class="category-title">Wedding Essentials</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Wedding card printing &amp; design</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Full wedding planning &amp; coordination</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">On-day wedding coordinator</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Budget &amp; vendor management</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">💄</span>
+          <span class="category-title">Beauty &amp; Grooming</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Bridal makeup</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Groom makeup</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Hair stylist</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Nail artist</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Pre-wedding spa &amp; facials</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Family &amp; guest makeup</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Mehndi artist</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🧹</span>
+          <span class="category-title">Support Staff &amp; Logistics</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Maids / House help</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Waiters / Serving staff</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Drivers</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Valet parking staff</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Portable washrooms</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Generator backup</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">📸</span>
+          <span class="category-title">Photography &amp; Videography</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Wedding photography</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Drone shots &amp; cinematic video</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Live wedding streaming</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Wedding reels / Instagram edits</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Photo booth / selfie booth</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🍽️</span>
+          <span class="category-title">Catering &amp; Food Add-ons</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Complete food catering</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Chaat counters</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Mocktail &amp; juice bar</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Ice cream / kulfi station</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Chocolate fountain</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Paan counter</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Fruit vendor (phal wala)</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Custom wedding cake</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Water bottles / water tank supply</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🌸</span>
+          <span class="category-title">Decoration &amp; Setup</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Tent &amp; lighting</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Flower decoration</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Gate &amp; stage decoration</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Mandap setup</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Varmala stage</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">LED wall / projectors</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Confetti / cold pyros</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Themed décor (royal, Rajasthani, boho)</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🕺</span>
+          <span class="category-title">Entertainment</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">DJ</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Wedding band / Dhol</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Live singers &amp; musicians</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Anchor / MC</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">LED dancers</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Fireworks</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Cartoon mascots (Mickey etc.)</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Chadar service</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Welcome girls (aarti thali)</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Horse / vintage car for Baraat</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🚗</span>
+          <span class="category-title">Transport &amp; Vehicle Services</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Car rental (groom/bride entry)</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Shuttle service for guests</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Station/airport pick-drop</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Bus or tempo traveler</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Luxury cars (Jaguar, Audi, BMW)</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🏨</span>
+          <span class="category-title">Accommodation &amp; Guest Services</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Guest room booking</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Bride &amp; groom suite decoration</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Farmhouse or Dharamshala stay</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Welcome drinks &amp; hampers</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Hospitality desk</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Bed tea &amp; breakfast</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Check-in/out management</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Guest RSVP coordination</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Travel coordination</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Itinerary via WhatsApp/SMS</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🛍️</span>
+          <span class="category-title">Fashion &amp; Accessories</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Bridal lehenga &amp; Sherwani rental</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Pagdi/Safa tying</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Jewelry on rent</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Varmala / Jaimala designs</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🙏</span>
+          <span class="category-title">Religious &amp; Traditional Services</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Pandit / priest booking</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Pooja samagri kits</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Haldi / Sangeet / Mehndi setup</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Mandap decoration</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Doli or palki for bride</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
+
+      <details class="service-category">
+        <summary class="category-header">
+          <span class="category-icon">🌴</span>
+          <span class="category-title">Honeymoon Planning</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="category-items">
+          <div class="service-item"><span class="service-name">Domestic &amp; international packages</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Flights, hotels, visa, sightseeing</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Custom honeymoon packages</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Romantic room decor &amp; dinner</span><button class="add-btn">+ Add</button></div>
+          <div class="service-item"><span class="service-name">Pre-honeymoon shoot</span><button class="add-btn">+ Add</button></div>
+        </div>
+      </details>
     </div>
 
     <div id="selectedList">
-      <h2>📋 Selected Services for Inquiry</h2>
+      <h2>📋 Your Selected Services</h2>
       <p id="cartCount">No services selected yet.</p>
       <ul id="selectedItems"></ul>
-      <input type="text" id="nameInput" placeholder="Enter your good name (optional)" />
+      <input type="text" id="nameInput" placeholder="Enter your name (optional)" />
       <button id="submitBtn">📩 Submit Inquiry via WhatsApp</button>
     </div>
   </main>
@@ -304,7 +471,6 @@
   </button>
 
   <script>
-    const addButtons = document.querySelectorAll('.add-btn');
     const selectedItemsList = document.getElementById('selectedItems');
     const cartCount = document.getElementById('cartCount');
     const submitBtn = document.getElementById('submitBtn');
@@ -312,22 +478,40 @@
     const nameInput = document.getElementById('nameInput');
     let selectedServices = JSON.parse(localStorage.getItem('baratisaySelections')) || [];
 
+    function getServiceName(btn) {
+      return btn.parentElement.querySelector('.service-name').textContent.trim();
+    }
+
     function updateCart() {
       selectedItemsList.innerHTML = '';
       selectedServices.forEach(service => {
         const li = document.createElement('li');
-        li.textContent = service;
+        const span = document.createElement('span');
+        span.textContent = service;
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-item-btn';
+        removeBtn.innerHTML = '✕';
+        removeBtn.setAttribute('aria-label', 'Remove ' + service);
+        removeBtn.addEventListener('click', () => {
+          selectedServices = selectedServices.filter(item => item !== service);
+          updateCart();
+        });
+        li.appendChild(span);
+        li.appendChild(removeBtn);
         selectedItemsList.appendChild(li);
       });
+
       cartCount.innerText = selectedServices.length
         ? `${selectedServices.length} service(s) selected.`
         : 'No services selected yet.';
+
       localStorage.setItem('baratisaySelections', JSON.stringify(selectedServices));
+
       document.querySelectorAll('.add-btn').forEach(btn => {
-        const service = btn.parentElement.innerText.replace('+ Add', '').replace('✓ Selected', '').trim();
+        const service = getServiceName(btn);
         if (selectedServices.includes(service)) {
           btn.classList.add('added');
-          btn.innerText = '✓ Selected';
+          btn.innerText = '✓ Added';
         } else {
           btn.classList.remove('added');
           btn.innerText = '+ Add';
@@ -335,9 +519,9 @@
       });
     }
 
-    addButtons.forEach(btn => {
+    document.querySelectorAll('.add-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const service = btn.parentElement.innerText.replace('+ Add', '').replace('✓ Selected', '').trim();
+        const service = getServiceName(btn);
         if (selectedServices.includes(service)) {
           selectedServices = selectedServices.filter(item => item !== service);
         } else {
@@ -368,14 +552,16 @@
       setTimeout(() => toast.classList.remove('show'), 3000);
     });
 
-    // Accordion behavior: only one <details> open at a time
-    document.querySelectorAll('details').forEach((targetDetail) => {
-      targetDetail.addEventListener('click', () => {
-        document.querySelectorAll('details').forEach((detail) => {
-          if (detail !== targetDetail) {
-            detail.removeAttribute('open');
-          }
-        });
+    // Accordion behavior: only one category open at a time
+    document.querySelectorAll('details.service-category').forEach((targetDetail) => {
+      targetDetail.addEventListener('toggle', () => {
+        if (targetDetail.open) {
+          document.querySelectorAll('details.service-category').forEach((detail) => {
+            if (detail !== targetDetail) {
+              detail.removeAttribute('open');
+            }
+          });
+        }
       });
     });
 
