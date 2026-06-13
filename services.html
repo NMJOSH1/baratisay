@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baratisay - Wedding Services</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-chrome-192x192.png" />
   <link rel="stylesheet" href="styles.css" />
   <style>
     /* HERO */
@@ -13,7 +17,7 @@
       text-align: center;
       padding: 2.5rem 1.5rem;
       border-radius: 1rem;
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto 2.5rem auto;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
@@ -30,7 +34,7 @@
 
     /* SERVICE CATEGORY CARDS */
     .services-grid {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto 2.5rem auto;
       display: flex;
       flex-direction: column;
@@ -51,8 +55,10 @@
       gap: 1rem;
       padding: 1.1rem 1.4rem;
       background: #fff7f0;
+      font-family: 'Playfair Display', 'Segoe UI', serif;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
       color: #2c2c2c;
       transition: background 0.2s ease;
     }
@@ -94,169 +100,6 @@
     .service-item:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-    }
-    .service-photo {
-      position: relative;
-      width: 50px;
-      height: 50px;
-      flex-shrink: 0;
-      border-radius: 0.6rem;
-      background: linear-gradient(135deg, #fceaea, #fdf3e7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      border: 1.5px dashed #e8c896;
-      color: #d4a24e;
-      overflow: hidden;
-    }
-    .service-photo img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 0.45rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .service-photo img.loaded {
-      opacity: 1;
-    }
-    .service-photo img.loaded ~ .photo-placeholder {
-      display: none;
-    }
-    .service-photo {
-      cursor: pointer;
-    }
-    .photo-zoom {
-      position: absolute;
-      bottom: 2px;
-      right: 2px;
-      font-size: 0.65rem;
-      background: rgba(0, 0, 0, 0.45);
-      color: #fff;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-    }
-
-    /* PHOTO GALLERY LIGHTBOX */
-    #galleryOverlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    #galleryOverlay.show {
-      display: flex;
-    }
-    .gallery-modal {
-      background: #fff;
-      border-radius: 1rem;
-      max-width: 420px;
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-    .gallery-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1rem;
-      background: #fff7f0;
-      border-bottom: 1px solid #f0e0d0;
-    }
-    .gallery-modal-header h3 {
-      font-size: 1rem;
-      margin: 0;
-      color: #2c2c2c;
-    }
-    .gallery-close {
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-      color: #999;
-      line-height: 1;
-    }
-    .gallery-vendor-tabs {
-      display: flex;
-      gap: 0.5rem;
-      padding: 0.6rem 1rem;
-      border-bottom: 1px solid #f0e0d0;
-      overflow-x: auto;
-    }
-    .gallery-vendor-tabs:empty {
-      display: none;
-    }
-    .gallery-vendor-tab {
-      flex-shrink: 0;
-      padding: 0.3rem 0.85rem;
-      border-radius: 1rem;
-      border: 1.5px solid #d4a24e;
-      background: #fff;
-      color: #b08d57;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .gallery-vendor-tab.active {
-      background: #bb2f2f;
-      border-color: #bb2f2f;
-      color: #fff;
-    }
-    .gallery-body {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      background: #fdf3e7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gallery-body img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-    .gallery-empty {
-      text-align: center;
-      color: #b08d57;
-      font-size: 0.95rem;
-      padding: 1rem;
-    }
-    .gallery-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.85);
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      color: #bb2f2f;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gallery-nav.prev { left: 10px; }
-    .gallery-nav.next { right: 10px; }
-    .gallery-counter {
-      text-align: center;
-      padding: 0.5rem;
-      font-size: 0.85rem;
-      color: #888;
     }
     .service-text {
       flex: 1;
@@ -303,7 +146,7 @@
 
     /* SELECTED SERVICES CART */
     #selectedList {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto 4rem auto;
       background: #fff;
       border: 2px solid #d4a24e;
@@ -458,11 +301,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="wedding-card-printing-and-design" data-name="Wedding card printing &amp; design" role="button" tabindex="0" aria-label="View photos for Wedding card printing &amp; design">
-              <img src="images/services/wedding-card-printing-and-design-v1-1.jpg" alt="Wedding card printing &amp; design sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🪪</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Wedding card printing &amp; design</span>
               <span class="service-price"></span>
@@ -470,11 +308,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="full-wedding-planning-and-coordination" data-name="Full wedding planning &amp; coordination" role="button" tabindex="0" aria-label="View photos for Full wedding planning &amp; coordination">
-              <img src="images/services/full-wedding-planning-and-coordination-v1-1.jpg" alt="Full wedding planning &amp; coordination sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🪪</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Full wedding planning &amp; coordination</span>
               <span class="service-price"></span>
@@ -482,11 +315,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="on-day-wedding-coordinator" data-name="On-day wedding coordinator" role="button" tabindex="0" aria-label="View photos for On-day wedding coordinator">
-              <img src="images/services/on-day-wedding-coordinator-v1-1.jpg" alt="On-day wedding coordinator sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🪪</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">On-day wedding coordinator</span>
               <span class="service-price"></span>
@@ -494,11 +322,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="budget-and-vendor-management" data-name="Budget &amp; vendor management" role="button" tabindex="0" aria-label="View photos for Budget &amp; vendor management">
-              <img src="images/services/budget-and-vendor-management-v1-1.jpg" alt="Budget &amp; vendor management sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🪪</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Budget &amp; vendor management</span>
               <span class="service-price"></span>
@@ -516,11 +339,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="bridal-makeup" data-name="Bridal makeup" role="button" tabindex="0" aria-label="View photos for Bridal makeup">
-              <img src="images/services/bridal-makeup-v1-1.jpg" alt="Bridal makeup sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">💄</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Bridal makeup</span>
               <span class="service-price"></span>
@@ -528,11 +346,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="groom-makeup" data-name="Groom makeup" role="button" tabindex="0" aria-label="View photos for Groom makeup">
-              <img src="images/services/groom-makeup-v1-1.jpg" alt="Groom makeup sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">💄</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Groom makeup</span>
               <span class="service-price"></span>
@@ -540,11 +353,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="hair-stylist" data-name="Hair stylist" role="button" tabindex="0" aria-label="View photos for Hair stylist">
-              <img src="images/services/hair-stylist-v1-1.jpg" alt="Hair stylist sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">💄</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Hair stylist</span>
               <span class="service-price"></span>
@@ -552,11 +360,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="nail-artist" data-name="Nail artist" role="button" tabindex="0" aria-label="View photos for Nail artist">
-              <img src="images/services/nail-artist-v1-1.jpg" alt="Nail artist sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">💄</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Nail artist</span>
               <span class="service-price"></span>
@@ -564,11 +367,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="pre-wedding-spa-and-facials" data-name="Pre-wedding spa &amp; facials" role="button" tabindex="0" aria-label="View photos for Pre-wedding spa &amp; facials">
-              <img src="images/services/pre-wedding-spa-and-facials-v1-1.jpg" alt="Pre-wedding spa &amp; facials sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">💄</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Pre-wedding spa &amp; facials</span>
               <span class="service-price"></span>
@@ -576,11 +374,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="family-and-guest-makeup" data-name="Family &amp; guest makeup" role="button" tabindex="0" aria-label="View photos for Family &amp; guest makeup">
-              <img src="images/services/family-and-guest-makeup-v1-1.jpg" alt="Family &amp; guest makeup sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">💄</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Family &amp; guest makeup</span>
               <span class="service-price"></span>
@@ -588,11 +381,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="mehndi-artist-henna-application" data-name="Mehndi artist (henna application)" role="button" tabindex="0" aria-label="View photos for Mehndi artist (henna application)">
-              <img src="images/services/mehndi-artist-henna-application-v1-1.jpg" alt="Mehndi artist (henna application) sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">💄</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Mehndi artist (henna application)</span>
               <span class="service-price"></span>
@@ -610,11 +398,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="maids-house-help" data-name="Maids / House help" role="button" tabindex="0" aria-label="View photos for Maids / House help">
-              <img src="images/services/maids-house-help-v1-1.jpg" alt="Maids / House help sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🧹</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Maids / House help</span>
               <span class="service-price"></span>
@@ -622,11 +405,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="waiters-serving-staff" data-name="Waiters / Serving staff" role="button" tabindex="0" aria-label="View photos for Waiters / Serving staff">
-              <img src="images/services/waiters-serving-staff-v1-1.jpg" alt="Waiters / Serving staff sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🧹</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Waiters / Serving staff</span>
               <span class="service-price"></span>
@@ -634,11 +412,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="drivers-for-guest-and-family-vehicles" data-name="Drivers for guest &amp; family vehicles" role="button" tabindex="0" aria-label="View photos for Drivers for guest &amp; family vehicles">
-              <img src="images/services/drivers-for-guest-and-family-vehicles-v1-1.jpg" alt="Drivers for guest &amp; family vehicles sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🧹</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Drivers for guest &amp; family vehicles</span>
               <span class="service-price"></span>
@@ -646,11 +419,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="valet-parking-staff" data-name="Valet parking staff" role="button" tabindex="0" aria-label="View photos for Valet parking staff">
-              <img src="images/services/valet-parking-staff-v1-1.jpg" alt="Valet parking staff sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🧹</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Valet parking staff</span>
               <span class="service-price"></span>
@@ -658,11 +426,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="portable-washrooms" data-name="Portable washrooms" role="button" tabindex="0" aria-label="View photos for Portable washrooms">
-              <img src="images/services/portable-washrooms-v1-1.jpg" alt="Portable washrooms sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🧹</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Portable washrooms</span>
               <span class="service-price"></span>
@@ -670,11 +433,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="generator-backup" data-name="Generator backup" role="button" tabindex="0" aria-label="View photos for Generator backup">
-              <img src="images/services/generator-backup-v1-1.jpg" alt="Generator backup sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🧹</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Generator backup</span>
               <span class="service-price"></span>
@@ -692,11 +450,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="wedding-photography" data-name="Wedding photography" role="button" tabindex="0" aria-label="View photos for Wedding photography">
-              <img src="images/services/wedding-photography-v1-1.jpg" alt="Wedding photography sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">📸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Wedding photography</span>
               <span class="service-price"></span>
@@ -704,11 +457,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="drone-shots-and-cinematic-video" data-name="Drone shots &amp; cinematic video" role="button" tabindex="0" aria-label="View photos for Drone shots &amp; cinematic video">
-              <img src="images/services/drone-shots-and-cinematic-video-v1-1.jpg" alt="Drone shots &amp; cinematic video sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">📸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Drone shots &amp; cinematic video</span>
               <span class="service-price"></span>
@@ -716,11 +464,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="live-wedding-streaming" data-name="Live wedding streaming" role="button" tabindex="0" aria-label="View photos for Live wedding streaming">
-              <img src="images/services/live-wedding-streaming-v1-1.jpg" alt="Live wedding streaming sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">📸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Live wedding streaming</span>
               <span class="service-price"></span>
@@ -728,11 +471,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="wedding-reels-instagram-edits" data-name="Wedding reels / Instagram edits" role="button" tabindex="0" aria-label="View photos for Wedding reels / Instagram edits">
-              <img src="images/services/wedding-reels-instagram-edits-v1-1.jpg" alt="Wedding reels / Instagram edits sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">📸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Wedding reels / Instagram edits</span>
               <span class="service-price"></span>
@@ -740,11 +478,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="photo-booth-selfie-booth" data-name="Photo booth / selfie booth" role="button" tabindex="0" aria-label="View photos for Photo booth / selfie booth">
-              <img src="images/services/photo-booth-selfie-booth-v1-1.jpg" alt="Photo booth / selfie booth sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">📸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Photo booth / selfie booth</span>
               <span class="service-price"></span>
@@ -762,11 +495,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="complete-food-catering" data-name="Complete food catering" role="button" tabindex="0" aria-label="View photos for Complete food catering">
-              <img src="images/services/complete-food-catering-v1-1.jpg" alt="Complete food catering sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Complete food catering</span>
               <span class="service-price"></span>
@@ -774,11 +502,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="chaat-counters" data-name="Chaat counters" role="button" tabindex="0" aria-label="View photos for Chaat counters">
-              <img src="images/services/chaat-counters-v1-1.jpg" alt="Chaat counters sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Chaat counters</span>
               <span class="service-price"></span>
@@ -786,11 +509,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="mocktail-and-juice-bar" data-name="Mocktail &amp; juice bar" role="button" tabindex="0" aria-label="View photos for Mocktail &amp; juice bar">
-              <img src="images/services/mocktail-and-juice-bar-v1-1.jpg" alt="Mocktail &amp; juice bar sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Mocktail &amp; juice bar</span>
               <span class="service-price"></span>
@@ -798,11 +516,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="ice-cream-kulfi-station" data-name="Ice cream / kulfi station" role="button" tabindex="0" aria-label="View photos for Ice cream / kulfi station">
-              <img src="images/services/ice-cream-kulfi-station-v1-1.jpg" alt="Ice cream / kulfi station sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Ice cream / kulfi station</span>
               <span class="service-price"></span>
@@ -810,11 +523,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="chocolate-fountain" data-name="Chocolate fountain" role="button" tabindex="0" aria-label="View photos for Chocolate fountain">
-              <img src="images/services/chocolate-fountain-v1-1.jpg" alt="Chocolate fountain sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Chocolate fountain</span>
               <span class="service-price"></span>
@@ -822,11 +530,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="paan-counter" data-name="Paan counter" role="button" tabindex="0" aria-label="View photos for Paan counter">
-              <img src="images/services/paan-counter-v1-1.jpg" alt="Paan counter sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Paan counter</span>
               <span class="service-price"></span>
@@ -834,11 +537,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="fruit-vendor-phal-wala" data-name="Fruit vendor (phal wala)" role="button" tabindex="0" aria-label="View photos for Fruit vendor (phal wala)">
-              <img src="images/services/fruit-vendor-phal-wala-v1-1.jpg" alt="Fruit vendor (phal wala) sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Fruit vendor (phal wala)</span>
               <span class="service-price"></span>
@@ -846,11 +544,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="custom-wedding-cake" data-name="Custom wedding cake" role="button" tabindex="0" aria-label="View photos for Custom wedding cake">
-              <img src="images/services/custom-wedding-cake-v1-1.jpg" alt="Custom wedding cake sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Custom wedding cake</span>
               <span class="service-price"></span>
@@ -858,11 +551,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="water-bottles-water-tank-supply" data-name="Water bottles / water tank supply" role="button" tabindex="0" aria-label="View photos for Water bottles / water tank supply">
-              <img src="images/services/water-bottles-water-tank-supply-v1-1.jpg" alt="Water bottles / water tank supply sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🍽️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Water bottles / water tank supply</span>
               <span class="service-price"></span>
@@ -880,11 +568,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="tent-and-lighting" data-name="Tent &amp; lighting" role="button" tabindex="0" aria-label="View photos for Tent &amp; lighting">
-              <img src="images/services/tent-and-lighting-v1-1.jpg" alt="Tent &amp; lighting sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Tent &amp; lighting</span>
               <span class="service-price"></span>
@@ -892,11 +575,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="flower-decoration" data-name="Flower decoration" role="button" tabindex="0" aria-label="View photos for Flower decoration">
-              <img src="images/services/flower-decoration-v1-1.jpg" alt="Flower decoration sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Flower decoration</span>
               <span class="service-price"></span>
@@ -904,11 +582,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="gate-and-stage-decoration" data-name="Gate &amp; stage decoration" role="button" tabindex="0" aria-label="View photos for Gate &amp; stage decoration">
-              <img src="images/services/gate-and-stage-decoration-v1-1.jpg" alt="Gate &amp; stage decoration sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Gate &amp; stage decoration</span>
               <span class="service-price"></span>
@@ -916,11 +589,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="mandap-setup-and-decoration" data-name="Mandap setup &amp; decoration" role="button" tabindex="0" aria-label="View photos for Mandap setup &amp; decoration">
-              <img src="images/services/mandap-setup-and-decoration-v1-1.jpg" alt="Mandap setup &amp; decoration sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Mandap setup &amp; decoration</span>
               <span class="service-price"></span>
@@ -928,11 +596,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="varmala-jaimala-exchange-stage" data-name="Varmala / Jaimala exchange stage" role="button" tabindex="0" aria-label="View photos for Varmala / Jaimala exchange stage">
-              <img src="images/services/varmala-jaimala-exchange-stage-v1-1.jpg" alt="Varmala / Jaimala exchange stage sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Varmala / Jaimala exchange stage</span>
               <span class="service-price"></span>
@@ -940,11 +603,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="led-wall-projectors" data-name="LED wall / projectors" role="button" tabindex="0" aria-label="View photos for LED wall / projectors">
-              <img src="images/services/led-wall-projectors-v1-1.jpg" alt="LED wall / projectors sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">LED wall / projectors</span>
               <span class="service-price"></span>
@@ -952,11 +610,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="confetti-cold-pyro-effects" data-name="Confetti / cold pyro effects" role="button" tabindex="0" aria-label="View photos for Confetti / cold pyro effects">
-              <img src="images/services/confetti-cold-pyro-effects-v1-1.jpg" alt="Confetti / cold pyro effects sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Confetti / cold pyro effects</span>
               <span class="service-price"></span>
@@ -964,11 +617,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="themed-d-cor-royal-rajasthani-boho" data-name="Themed décor (royal, Rajasthani, boho)" role="button" tabindex="0" aria-label="View photos for Themed décor (royal, Rajasthani, boho)">
-              <img src="images/services/themed-d-cor-royal-rajasthani-boho-v1-1.jpg" alt="Themed décor (royal, Rajasthani, boho) sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Themed décor (royal, Rajasthani, boho)</span>
               <span class="service-price"></span>
@@ -976,11 +624,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="haldi-sangeet-mehndi-ceremony-d-cor" data-name="Haldi / Sangeet / Mehndi ceremony décor" role="button" tabindex="0" aria-label="View photos for Haldi / Sangeet / Mehndi ceremony décor">
-              <img src="images/services/haldi-sangeet-mehndi-ceremony-d-cor-v1-1.jpg" alt="Haldi / Sangeet / Mehndi ceremony décor sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌸</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Haldi / Sangeet / Mehndi ceremony décor</span>
               <span class="service-price"></span>
@@ -998,11 +641,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="dj" data-name="DJ" role="button" tabindex="0" aria-label="View photos for DJ">
-              <img src="images/services/dj-v1-1.jpg" alt="DJ sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">DJ</span>
               <span class="service-price"></span>
@@ -1010,11 +648,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="wedding-band-dhol" data-name="Wedding band / Dhol" role="button" tabindex="0" aria-label="View photos for Wedding band / Dhol">
-              <img src="images/services/wedding-band-dhol-v1-1.jpg" alt="Wedding band / Dhol sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Wedding band / Dhol</span>
               <span class="service-price"></span>
@@ -1022,11 +655,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="live-singers-and-musicians" data-name="Live singers &amp; musicians" role="button" tabindex="0" aria-label="View photos for Live singers &amp; musicians">
-              <img src="images/services/live-singers-and-musicians-v1-1.jpg" alt="Live singers &amp; musicians sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Live singers &amp; musicians</span>
               <span class="service-price"></span>
@@ -1034,11 +662,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="anchor-mc" data-name="Anchor / MC" role="button" tabindex="0" aria-label="View photos for Anchor / MC">
-              <img src="images/services/anchor-mc-v1-1.jpg" alt="Anchor / MC sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Anchor / MC</span>
               <span class="service-price"></span>
@@ -1046,11 +669,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="led-dancers" data-name="LED dancers" role="button" tabindex="0" aria-label="View photos for LED dancers">
-              <img src="images/services/led-dancers-v1-1.jpg" alt="LED dancers sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">LED dancers</span>
               <span class="service-price"></span>
@@ -1058,11 +676,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="fireworks" data-name="Fireworks" role="button" tabindex="0" aria-label="View photos for Fireworks">
-              <img src="images/services/fireworks-v1-1.jpg" alt="Fireworks sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Fireworks</span>
               <span class="service-price"></span>
@@ -1070,11 +683,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="cartoon-mascots-mickey-etc" data-name="Cartoon mascots (Mickey etc.)" role="button" tabindex="0" aria-label="View photos for Cartoon mascots (Mickey etc.)">
-              <img src="images/services/cartoon-mascots-mickey-etc-v1-1.jpg" alt="Cartoon mascots (Mickey etc.) sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Cartoon mascots (Mickey etc.)</span>
               <span class="service-price"></span>
@@ -1082,11 +690,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="welcome-girls-aarti-thali" data-name="Welcome girls (aarti thali)" role="button" tabindex="0" aria-label="View photos for Welcome girls (aarti thali)">
-              <img src="images/services/welcome-girls-aarti-thali-v1-1.jpg" alt="Welcome girls (aarti thali) sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🕺</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Welcome girls (aarti thali)</span>
               <span class="service-price"></span>
@@ -1104,11 +707,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="car-rental-groom-bride-entry" data-name="Car rental (groom/bride entry)" role="button" tabindex="0" aria-label="View photos for Car rental (groom/bride entry)">
-              <img src="images/services/car-rental-groom-bride-entry-v1-1.jpg" alt="Car rental (groom/bride entry) sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🚗</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Car rental (groom/bride entry)</span>
               <span class="service-price"></span>
@@ -1116,11 +714,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="shuttle-service-for-guests" data-name="Shuttle service for guests" role="button" tabindex="0" aria-label="View photos for Shuttle service for guests">
-              <img src="images/services/shuttle-service-for-guests-v1-1.jpg" alt="Shuttle service for guests sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🚗</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Shuttle service for guests</span>
               <span class="service-price"></span>
@@ -1128,11 +721,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="station-airport-pick-drop" data-name="Station/airport pick-drop" role="button" tabindex="0" aria-label="View photos for Station/airport pick-drop">
-              <img src="images/services/station-airport-pick-drop-v1-1.jpg" alt="Station/airport pick-drop sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🚗</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Station/airport pick-drop</span>
               <span class="service-price"></span>
@@ -1140,11 +728,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="bus-or-tempo-traveler" data-name="Bus or tempo traveler" role="button" tabindex="0" aria-label="View photos for Bus or tempo traveler">
-              <img src="images/services/bus-or-tempo-traveler-v1-1.jpg" alt="Bus or tempo traveler sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🚗</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Bus or tempo traveler</span>
               <span class="service-price"></span>
@@ -1152,11 +735,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="luxury-cars-jaguar-audi-bmw" data-name="Luxury cars (Jaguar, Audi, BMW)" role="button" tabindex="0" aria-label="View photos for Luxury cars (Jaguar, Audi, BMW)">
-              <img src="images/services/luxury-cars-jaguar-audi-bmw-v1-1.jpg" alt="Luxury cars (Jaguar, Audi, BMW) sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🚗</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Luxury cars (Jaguar, Audi, BMW)</span>
               <span class="service-price"></span>
@@ -1174,11 +752,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="guest-room-booking" data-name="Guest room booking" role="button" tabindex="0" aria-label="View photos for Guest room booking">
-              <img src="images/services/guest-room-booking-v1-1.jpg" alt="Guest room booking sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Guest room booking</span>
               <span class="service-price"></span>
@@ -1186,11 +759,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="bride-and-groom-suite-decoration" data-name="Bride &amp; groom suite decoration" role="button" tabindex="0" aria-label="View photos for Bride &amp; groom suite decoration">
-              <img src="images/services/bride-and-groom-suite-decoration-v1-1.jpg" alt="Bride &amp; groom suite decoration sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Bride &amp; groom suite decoration</span>
               <span class="service-price"></span>
@@ -1198,11 +766,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="farmhouse-or-dharamshala-stay" data-name="Farmhouse or Dharamshala stay" role="button" tabindex="0" aria-label="View photos for Farmhouse or Dharamshala stay">
-              <img src="images/services/farmhouse-or-dharamshala-stay-v1-1.jpg" alt="Farmhouse or Dharamshala stay sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Farmhouse or Dharamshala stay</span>
               <span class="service-price"></span>
@@ -1210,11 +773,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="welcome-hampers-for-guest-rooms" data-name="Welcome hampers for guest rooms" role="button" tabindex="0" aria-label="View photos for Welcome hampers for guest rooms">
-              <img src="images/services/welcome-hampers-for-guest-rooms-v1-1.jpg" alt="Welcome hampers for guest rooms sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Welcome hampers for guest rooms</span>
               <span class="service-price"></span>
@@ -1222,11 +780,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="hospitality-desk" data-name="Hospitality desk" role="button" tabindex="0" aria-label="View photos for Hospitality desk">
-              <img src="images/services/hospitality-desk-v1-1.jpg" alt="Hospitality desk sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Hospitality desk</span>
               <span class="service-price"></span>
@@ -1234,11 +787,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="bed-tea-and-breakfast" data-name="Bed tea &amp; breakfast" role="button" tabindex="0" aria-label="View photos for Bed tea &amp; breakfast">
-              <img src="images/services/bed-tea-and-breakfast-v1-1.jpg" alt="Bed tea &amp; breakfast sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Bed tea &amp; breakfast</span>
               <span class="service-price"></span>
@@ -1246,11 +794,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="check-in-out-management" data-name="Check-in/out management" role="button" tabindex="0" aria-label="View photos for Check-in/out management">
-              <img src="images/services/check-in-out-management-v1-1.jpg" alt="Check-in/out management sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Check-in/out management</span>
               <span class="service-price"></span>
@@ -1258,11 +801,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="guest-rsvp-coordination" data-name="Guest RSVP coordination" role="button" tabindex="0" aria-label="View photos for Guest RSVP coordination">
-              <img src="images/services/guest-rsvp-coordination-v1-1.jpg" alt="Guest RSVP coordination sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Guest RSVP coordination</span>
               <span class="service-price"></span>
@@ -1270,11 +808,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="travel-coordination" data-name="Travel coordination" role="button" tabindex="0" aria-label="View photos for Travel coordination">
-              <img src="images/services/travel-coordination-v1-1.jpg" alt="Travel coordination sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🏨</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Travel coordination</span>
               <span class="service-price"></span>
@@ -1292,11 +825,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="bridal-lehenga-and-sherwani-rental" data-name="Bridal lehenga &amp; Sherwani rental" role="button" tabindex="0" aria-label="View photos for Bridal lehenga &amp; Sherwani rental">
-              <img src="images/services/bridal-lehenga-and-sherwani-rental-v1-1.jpg" alt="Bridal lehenga &amp; Sherwani rental sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🛍️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Bridal lehenga &amp; Sherwani rental</span>
               <span class="service-price"></span>
@@ -1304,11 +832,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="pagdi-safa-tying" data-name="Pagdi/Safa tying" role="button" tabindex="0" aria-label="View photos for Pagdi/Safa tying">
-              <img src="images/services/pagdi-safa-tying-v1-1.jpg" alt="Pagdi/Safa tying sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🛍️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Pagdi/Safa tying</span>
               <span class="service-price"></span>
@@ -1316,11 +839,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="jewelry-on-rent" data-name="Jewelry on rent" role="button" tabindex="0" aria-label="View photos for Jewelry on rent">
-              <img src="images/services/jewelry-on-rent-v1-1.jpg" alt="Jewelry on rent sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🛍️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Jewelry on rent</span>
               <span class="service-price"></span>
@@ -1328,11 +846,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="varmala-jaimala-garland-design" data-name="Varmala / Jaimala garland design" role="button" tabindex="0" aria-label="View photos for Varmala / Jaimala garland design">
-              <img src="images/services/varmala-jaimala-garland-design-v1-1.jpg" alt="Varmala / Jaimala garland design sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🛍️</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Varmala / Jaimala garland design</span>
               <span class="service-price"></span>
@@ -1350,11 +863,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="pandit-priest-booking" data-name="Pandit / priest booking" role="button" tabindex="0" aria-label="View photos for Pandit / priest booking">
-              <img src="images/services/pandit-priest-booking-v1-1.jpg" alt="Pandit / priest booking sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🙏</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Pandit / priest booking</span>
               <span class="service-price"></span>
@@ -1362,11 +870,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="pooja-samagri-kits" data-name="Pooja samagri kits" role="button" tabindex="0" aria-label="View photos for Pooja samagri kits">
-              <img src="images/services/pooja-samagri-kits-v1-1.jpg" alt="Pooja samagri kits sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🙏</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Pooja samagri kits</span>
               <span class="service-price"></span>
@@ -1374,11 +877,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="doli-or-palki-for-bride" data-name="Doli or palki for bride" role="button" tabindex="0" aria-label="View photos for Doli or palki for bride">
-              <img src="images/services/doli-or-palki-for-bride-v1-1.jpg" alt="Doli or palki for bride sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🙏</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Doli or palki for bride</span>
               <span class="service-price"></span>
@@ -1386,11 +884,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="chadar-service" data-name="Chadar service" role="button" tabindex="0" aria-label="View photos for Chadar service">
-              <img src="images/services/chadar-service-v1-1.jpg" alt="Chadar service sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🙏</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Chadar service</span>
               <span class="service-price"></span>
@@ -1398,11 +891,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="horse-for-baraat-procession" data-name="Horse for Baraat procession" role="button" tabindex="0" aria-label="View photos for Horse for Baraat procession">
-              <img src="images/services/horse-for-baraat-procession-v1-1.jpg" alt="Horse for Baraat procession sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🙏</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Horse for Baraat procession</span>
               <span class="service-price"></span>
@@ -1420,11 +908,6 @@
         </summary>
         <div class="category-items">
           <div class="service-item">
-            <div class="service-photo" data-slug="domestic-and-international-packages" data-name="Domestic &amp; international packages" role="button" tabindex="0" aria-label="View photos for Domestic &amp; international packages">
-              <img src="images/services/domestic-and-international-packages-v1-1.jpg" alt="Domestic &amp; international packages sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌴</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Domestic &amp; international packages</span>
               <span class="service-price"></span>
@@ -1432,11 +915,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="flights-hotels-visa-sightseeing" data-name="Flights, hotels, visa, sightseeing" role="button" tabindex="0" aria-label="View photos for Flights, hotels, visa, sightseeing">
-              <img src="images/services/flights-hotels-visa-sightseeing-v1-1.jpg" alt="Flights, hotels, visa, sightseeing sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌴</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Flights, hotels, visa, sightseeing</span>
               <span class="service-price"></span>
@@ -1444,11 +922,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="custom-honeymoon-packages" data-name="Custom honeymoon packages" role="button" tabindex="0" aria-label="View photos for Custom honeymoon packages">
-              <img src="images/services/custom-honeymoon-packages-v1-1.jpg" alt="Custom honeymoon packages sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌴</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Custom honeymoon packages</span>
               <span class="service-price"></span>
@@ -1456,11 +929,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="romantic-room-decor-and-dinner" data-name="Romantic room decor &amp; dinner" role="button" tabindex="0" aria-label="View photos for Romantic room decor &amp; dinner">
-              <img src="images/services/romantic-room-decor-and-dinner-v1-1.jpg" alt="Romantic room decor &amp; dinner sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌴</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Romantic room decor &amp; dinner</span>
               <span class="service-price"></span>
@@ -1468,11 +936,6 @@
             <button class="add-btn">+ Add</button>
           </div>
           <div class="service-item">
-            <div class="service-photo" data-slug="pre-honeymoon-shoot" data-name="Pre-honeymoon shoot" role="button" tabindex="0" aria-label="View photos for Pre-honeymoon shoot">
-              <img src="images/services/pre-honeymoon-shoot-v1-1.jpg" alt="Pre-honeymoon shoot sample work" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-              <span class="photo-placeholder">🌴</span>
-              <span class="photo-zoom">🔍</span>
-            </div>
             <div class="service-text">
               <span class="service-name">Pre-honeymoon shoot</span>
               <span class="service-price"></span>
@@ -1496,22 +959,6 @@
   <button id="floatingCartBtn" onclick="document.getElementById('selectedList').scrollIntoView({behavior: 'smooth'})">
     🛒 View Inquiry Cart
   </button>
-
-  <div id="galleryOverlay">
-    <div class="gallery-modal">
-      <div class="gallery-modal-header">
-        <h3 id="galleryTitle">Photos</h3>
-        <button class="gallery-close" id="galleryClose" aria-label="Close">✕</button>
-      </div>
-      <div class="gallery-vendor-tabs" id="galleryVendorTabs"></div>
-      <div class="gallery-body" id="galleryBody">
-        <img id="galleryImage" src="" alt="" />
-        <button class="gallery-nav prev" id="galleryPrev" aria-label="Previous photo">‹</button>
-        <button class="gallery-nav next" id="galleryNext" aria-label="Next photo">›</button>
-      </div>
-      <div class="gallery-counter" id="galleryCounter"></div>
-    </div>
-  </div>
 
   <script>
     const selectedItemsList = document.getElementById('selectedItems');
@@ -1625,136 +1072,6 @@
 
     updateCart();
 
-    // PHOTO GALLERY LIGHTBOX (organized by vendor)
-    const MAX_VENDORS = 3;
-    const MAX_PHOTOS_PER_VENDOR = 3;
-    const galleryOverlay = document.getElementById('galleryOverlay');
-    const galleryImage = document.getElementById('galleryImage');
-    const galleryTitle = document.getElementById('galleryTitle');
-    const galleryCounter = document.getElementById('galleryCounter');
-    const galleryBody = document.getElementById('galleryBody');
-    const galleryPrev = document.getElementById('galleryPrev');
-    const galleryNext = document.getElementById('galleryNext');
-    const galleryClose = document.getElementById('galleryClose');
-    const galleryVendorTabs = document.getElementById('galleryVendorTabs');
-
-    let vendorPhotos = {};
-    let galleryUrls = [];
-    let galleryIndex = 0;
-
-    function preloadImage(url) {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve({ url, ok: true });
-        img.onerror = () => resolve({ url, ok: false });
-        img.src = url;
-      });
-    }
-
-    function showGalleryIndex(i) {
-      if (!galleryUrls.length) return;
-      galleryIndex = (i + galleryUrls.length) % galleryUrls.length;
-      galleryImage.src = galleryUrls[galleryIndex];
-      galleryCounter.textContent = `${galleryIndex + 1} / ${galleryUrls.length}`;
-      const showNav = galleryUrls.length > 1;
-      galleryPrev.style.display = showNav ? 'flex' : 'none';
-      galleryNext.style.display = showNav ? 'flex' : 'none';
-    }
-
-    function selectVendor(vendorNum) {
-      galleryUrls = vendorPhotos[vendorNum] || [];
-      galleryVendorTabs.querySelectorAll('.gallery-vendor-tab').forEach(tab => {
-        tab.classList.toggle('active', Number(tab.dataset.vendor) === vendorNum);
-      });
-      const empty = galleryBody.querySelector('.gallery-empty');
-      if (empty) empty.remove();
-      galleryImage.style.display = 'block';
-      showGalleryIndex(0);
-    }
-
-    async function openGallery(slug, name) {
-      galleryTitle.textContent = name;
-      galleryImage.style.display = 'none';
-      galleryPrev.style.display = 'none';
-      galleryNext.style.display = 'none';
-      galleryVendorTabs.innerHTML = '';
-      const existingEmpty = galleryBody.querySelector('.gallery-empty');
-      if (existingEmpty) existingEmpty.remove();
-      galleryCounter.textContent = 'Loading...';
-      galleryOverlay.classList.add('show');
-
-      const checks = [];
-      for (let v = 1; v <= MAX_VENDORS; v++) {
-        for (let p = 1; p <= MAX_PHOTOS_PER_VENDOR; p++) {
-          checks.push({ v, url: `images/services/${slug}-v${v}-${p}.jpg` });
-        }
-      }
-      const results = await Promise.all(checks.map(c => preloadImage(c.url)));
-
-      vendorPhotos = {};
-      results.forEach((r, idx) => {
-        const v = checks[idx].v;
-        if (r.ok) {
-          if (!vendorPhotos[v]) vendorPhotos[v] = [];
-          vendorPhotos[v].push(r.url);
-        }
-      });
-
-      const vendorsWithPhotos = Object.keys(vendorPhotos).map(Number).sort((a, b) => a - b);
-
-      if (vendorsWithPhotos.length === 0) {
-        galleryCounter.textContent = '';
-        const empty = document.createElement('div');
-        empty.className = 'gallery-empty';
-        empty.textContent = '📷 Photos for this service are coming soon!';
-        galleryBody.appendChild(empty);
-        return;
-      }
-
-      if (vendorsWithPhotos.length > 1) {
-        vendorsWithPhotos.forEach(v => {
-          const tab = document.createElement('button');
-          tab.className = 'gallery-vendor-tab';
-          tab.dataset.vendor = v;
-          tab.textContent = `Vendor ${v}`;
-          tab.addEventListener('click', () => selectVendor(v));
-          galleryVendorTabs.appendChild(tab);
-        });
-      }
-
-      selectVendor(vendorsWithPhotos[0]);
-    }
-
-    function closeGallery() {
-      galleryOverlay.classList.remove('show');
-      galleryUrls = [];
-      vendorPhotos = {};
-    }
-
-    document.querySelectorAll('.service-photo').forEach(photo => {
-      const slug = photo.getAttribute('data-slug');
-      const name = photo.getAttribute('data-name');
-      photo.addEventListener('click', () => openGallery(slug, name));
-      photo.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openGallery(slug, name);
-        }
-      });
-    });
-
-    galleryClose.addEventListener('click', closeGallery);
-    galleryOverlay.addEventListener('click', (e) => {
-      if (e.target === galleryOverlay) closeGallery();
-    });
-    galleryPrev.addEventListener('click', () => showGalleryIndex(galleryIndex - 1));
-    galleryNext.addEventListener('click', () => showGalleryIndex(galleryIndex + 1));
-    document.addEventListener('keydown', (e) => {
-      if (!galleryOverlay.classList.contains('show')) return;
-      if (e.key === 'Escape') closeGallery();
-      if (e.key === 'ArrowLeft') showGalleryIndex(galleryIndex - 1);
-      if (e.key === 'ArrowRight') showGalleryIndex(galleryIndex + 1);
-    });
   </script>
 </body>
 </html>

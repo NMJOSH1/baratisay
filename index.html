@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baratisay - Royal Wedding Planner</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-chrome-192x192.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -31,6 +35,29 @@
           <a href="contact.html" class="book-now-btn">📞 Book Now</a>
         </div>
       </div>
+
+      <!-- STAT STRIP -->
+      <section class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-number">80+</span>
+          <span class="stat-label">Services</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">Delhi NCR</span>
+          <span class="stat-label">Coverage</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">Verified</span>
+          <span class="stat-label">Vendors</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">Instant</span>
+          <span class="stat-label">WhatsApp Quotes</span>
+        </div>
+      </section>
 
       <!-- ABOUT SECTION -->
       <section class="about-section">
@@ -71,6 +98,39 @@
         </div>
       </section>
 
+      <!-- GALLERY SECTION -->
+      <section class="gallery-section">
+        <h2 class="section-title">A Glimpse of What We Create</h2>
+        <p class="gallery-subtext">Tap a category to view photos &amp; videos. We're just getting started — more will appear here soon!</p>
+        <div class="gallery-grid">
+          <div class="gallery-card" data-slug="decoration-floral" data-name="Decoration &amp; Floral Setup" role="button" tabindex="0">
+            <span class="gallery-icon">🌸</span>
+            <span class="gallery-label">Decoration &amp; Floral Setup</span>
+            <span class="gallery-zoom">🔍</span>
+          </div>
+          <div class="gallery-card" data-slug="catering-food" data-name="Catering &amp; Food" role="button" tabindex="0">
+            <span class="gallery-icon">🍽️</span>
+            <span class="gallery-label">Catering &amp; Food</span>
+            <span class="gallery-zoom">🔍</span>
+          </div>
+          <div class="gallery-card" data-slug="photography-videography" data-name="Photography &amp; Videography" role="button" tabindex="0">
+            <span class="gallery-icon">🎥</span>
+            <span class="gallery-label">Photography &amp; Videography</span>
+            <span class="gallery-zoom">🔍</span>
+          </div>
+          <div class="gallery-card" data-slug="bridal-makeup-styling" data-name="Bridal Makeup &amp; Styling" role="button" tabindex="0">
+            <span class="gallery-icon">💄</span>
+            <span class="gallery-label">Bridal Makeup &amp; Styling</span>
+            <span class="gallery-zoom">🔍</span>
+          </div>
+          <div class="gallery-card" data-slug="entertainment-effects" data-name="Entertainment &amp; Special Effects" role="button" tabindex="0">
+            <span class="gallery-icon">🎉</span>
+            <span class="gallery-label">Entertainment &amp; Special Effects</span>
+            <span class="gallery-zoom">🔍</span>
+          </div>
+        </div>
+      </section>
+
       <!-- HOW IT WORKS SECTION -->
       <section class="how-section">
         <h2 class="section-title">How It Works</h2>
@@ -96,5 +156,141 @@
         </div>
       </section>
     </main>
+
+    <div id="homeGalleryOverlay" class="home-gallery-overlay">
+      <div class="home-gallery-modal">
+        <div class="home-gallery-header">
+          <h3 id="homeGalleryTitle">Gallery</h3>
+          <button class="home-gallery-close" id="homeGalleryClose" aria-label="Close">✕</button>
+        </div>
+        <div class="home-gallery-body" id="homeGalleryBody">
+          <img id="homeGalleryImage" src="" alt="" />
+          <video id="homeGalleryVideo" controls></video>
+          <button class="home-gallery-nav prev" id="homeGalleryPrev" aria-label="Previous">‹</button>
+          <button class="home-gallery-nav next" id="homeGalleryNext" aria-label="Next">›</button>
+        </div>
+        <div class="home-gallery-counter" id="homeGalleryCounter"></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const MAX_ITEMS = 15;
+        const overlay = document.getElementById('homeGalleryOverlay');
+        const title = document.getElementById('homeGalleryTitle');
+        const body = document.getElementById('homeGalleryBody');
+        const imgEl = document.getElementById('homeGalleryImage');
+        const videoEl = document.getElementById('homeGalleryVideo');
+        const prevBtn = document.getElementById('homeGalleryPrev');
+        const nextBtn = document.getElementById('homeGalleryNext');
+        const closeBtn = document.getElementById('homeGalleryClose');
+        const counter = document.getElementById('homeGalleryCounter');
+
+        let items = [];
+        let index = 0;
+
+        function checkExists(url) {
+          return fetch(url, { method: 'HEAD' })
+            .then(res => res.ok)
+            .catch(() => false);
+        }
+
+        function showIndex(i) {
+          if (!items.length) return;
+          index = (i + items.length) % items.length;
+          const item = items[index];
+          if (item.type === 'video') {
+            imgEl.style.display = 'none';
+            videoEl.style.display = 'block';
+            videoEl.src = item.url;
+          } else {
+            videoEl.pause();
+            videoEl.style.display = 'none';
+            imgEl.style.display = 'block';
+            imgEl.src = item.url;
+          }
+          counter.textContent = `${index + 1} / ${items.length}`;
+          const showNav = items.length > 1;
+          prevBtn.style.display = showNav ? 'flex' : 'none';
+          nextBtn.style.display = showNav ? 'flex' : 'none';
+        }
+
+        async function openGallery(slug, name) {
+          title.textContent = name;
+          imgEl.style.display = 'none';
+          videoEl.style.display = 'none';
+          videoEl.pause();
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'none';
+          const existingEmpty = body.querySelector('.home-gallery-empty');
+          if (existingEmpty) existingEmpty.remove();
+          counter.textContent = 'Loading...';
+          overlay.classList.add('show');
+
+          const checks = [];
+          for (let i = 1; i <= MAX_ITEMS; i++) {
+            const jpgUrl = `images/gallery/${slug}-${i}.jpg`;
+            const mp4Url = `images/gallery/${slug}-${i}.mp4`;
+            checks.push(
+              checkExists(jpgUrl).then(ok => ok ? { type: 'image', url: jpgUrl } : null)
+            );
+            checks.push(
+              checkExists(mp4Url).then(ok => ok ? { type: 'video', url: mp4Url } : null)
+            );
+          }
+          const results = await Promise.all(checks);
+
+          items = [];
+          for (let i = 0; i < MAX_ITEMS; i++) {
+            const jpgResult = results[i * 2];
+            const mp4Result = results[i * 2 + 1];
+            if (jpgResult) items.push(jpgResult);
+            else if (mp4Result) items.push(mp4Result);
+          }
+
+          if (items.length === 0) {
+            counter.textContent = '';
+            const empty = document.createElement('div');
+            empty.className = 'home-gallery-empty';
+            empty.textContent = '📷 Photos & videos for this category are coming soon!';
+            body.appendChild(empty);
+            return;
+          }
+
+          showIndex(0);
+        }
+
+        function closeGallery() {
+          overlay.classList.remove('show');
+          videoEl.pause();
+          items = [];
+        }
+
+        document.querySelectorAll('.gallery-card').forEach(card => {
+          const slug = card.getAttribute('data-slug');
+          const name = card.getAttribute('data-name');
+          card.addEventListener('click', () => openGallery(slug, name));
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openGallery(slug, name);
+            }
+          });
+        });
+
+        closeBtn.addEventListener('click', closeGallery);
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeGallery();
+        });
+        prevBtn.addEventListener('click', () => showIndex(index - 1));
+        nextBtn.addEventListener('click', () => showIndex(index + 1));
+        document.addEventListener('keydown', (e) => {
+          if (!overlay.classList.contains('show')) return;
+          if (e.key === 'Escape') closeGallery();
+          if (e.key === 'ArrowLeft') showIndex(index - 1);
+          if (e.key === 'ArrowRight') showIndex(index + 1);
+        });
+      })();
+    </script>
   </body>
 </html>
